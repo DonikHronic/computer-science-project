@@ -1,0 +1,238 @@
+{
+  "objects": [
+    {
+      "id": 1,
+      "name": "Initiate Reservation",
+      "description": "The client selects services and confirms the reservation by finalizing the booking.",
+      "status": "AVAILABLE"
+    },
+    {
+      "id": 2,
+      "name": "Verify Payment Method",
+      "description": "System verifies the payment method with the financial institution.",
+      "status": "AVAILABLE"
+    },
+    {
+      "id": 3,
+      "name": "Security Screening",
+      "description": "System conducts a security screening to ensure the transaction is secure.",
+      "status": "AVAILABLE"
+    },
+    {
+      "id": 4,
+      "name": "Confirm Payment",
+      "description": "The financial institution confirms payment after the security screening.",
+      "status": "AVAILABLE"
+    },
+    {
+      "id": 5,
+      "name": "Check Service Availability",
+      "description": "The Reservation System verifies and confirms the availability of the requested services.",
+      "status": "AVAILABLE"
+    },
+    {
+      "id": 6,
+      "name": "Send Reservation Confirmation Email",
+      "description": "The client receives an email confirming the reservation and its details.",
+      "status": "AVAILABLE"
+    },
+    {
+      "id": 7,
+      "name": "Dispatch to Service Provider",
+      "description": "The Reservation System sends the reservation details to the service provider for preparation.",
+      "status": "AVAILABLE"
+    },
+    {
+      "id": 8,
+      "name": "Acknowledge by Service Provider",
+      "description": "The service provider acknowledges receipt of the reservation and starts preparation.",
+      "status": "AVAILABLE"
+    },
+    {
+      "id": 9,
+      "name": "Prepare Services",
+      "description": "The service provider prepares the necessary services as per the reservation.",
+      "status": "AVAILABLE"
+    },
+    {
+      "id": 10,
+      "name": "Update Reservation Status",
+      "description": "The Reservation System updates the status of the reservation after preparation.",
+      "status": "AVAILABLE"
+    },
+    {
+      "id": 11,
+      "name": "Provide Services",
+      "description": "The services are provided to the client as per the reservation details.",
+      "status": "AVAILABLE"
+    },
+    {
+      "id": 12,
+      "name": "Send Service Delivery Email",
+      "description": "The client receives an email confirming the delivery of the services.",
+      "status": "AVAILABLE"
+    },
+    {
+      "id": 13,
+      "name": "Confirm Payment Receipt",
+      "description": "The system confirms that payment has been received for the services.",
+      "status": "AVAILABLE"
+    },
+    {
+      "id": 14,
+      "name": "Finalize Payment",
+      "description": "The Payment Processing System finalizes the payment for the services.",
+      "status": "AVAILABLE"
+    },
+    {
+      "id": 15,
+      "name": "Generate Receipt",
+      "description": "The Reservation System generates a receipt for the provided services.",
+      "status": "AVAILABLE"
+    },
+    {
+      "id": 16,
+      "name": "Update Financial Records",
+      "description": "The Financial Management System, including the Revenue Management module, is updated with the transaction details.",
+      "status": "AVAILABLE"
+    },
+    {
+      "id": 17,
+      "name": "Complete Service Delivery",
+      "description": "The client receives the completed services, marking the end of the Reservation E2E Process.",
+      "status": "AVAILABLE"
+    }
+  ],
+  "interactions": [
+    {
+      "from": 1,
+      "name": "Initiate Reservation",
+      "to": [
+        {
+          "id": 2,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "from": 2,
+      "name": "Verify Payment Method",
+      "to": [
+        {
+          "id": 3,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "from": 3,
+      "name": "Security Screening",
+      "to": [
+        {
+          "id": 4,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "from": 4,
+      "name": "Confirm Payment",
+      "to": [
+        {
+          "id": 5,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "from": 5,
+      "name": "Check Service Availability",
+      "to": [
+        {
+          "id": 6,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 7,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "from": 7,
+      "name": "Dispatch to Service Provider",
+      "to": [
+        {
+          "id": 8,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "from": 8,
+      "name": "Acknowledge by Service Provider",
+      "to": [
+        {
+          "id": 9,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "from": 9,
+      "name": "Prepare Services",
+      "to": [
+        {
+          "id": 10,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 11,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "from": 11,
+      "name": "Provide Services",
+      "to": [
+        {
+          "id": 12,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 13,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 17,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "from": 13,
+      "name": "Confirm Payment Receipt",
+      "to": [
+        {
+          "id": 14,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 15,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "from": 15,
+      "name": "Generate Receipt",
+      "to": [
+        {
+          "id": 16,
+          "status": "AVAILABLE"
+        }
+      ]
+    }
+  ]
+}
