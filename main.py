@@ -1,3 +1,7 @@
+import os
+
+from dotenv import load_dotenv
+
 EVENTS = [
     "Payment Gateway Downtime: Disruption in payment verification due to financial institution outages,"
     " delaying reservations",
@@ -16,6 +20,10 @@ Welcome to the Solution Architect Assistant!
 
 Here you can analyze the negative impact of an external events to your company's business process and generate high level solutions that help you to mitigate the impact.
 """
+
+load_dotenv()
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", None)
 
 
 def main():
