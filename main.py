@@ -1,6 +1,6 @@
-import os
+import asyncio
 
-from dotenv import load_dotenv
+from impact_analysis.impact_analysis import execute_impact_analysis
 
 EVENTS = [
     "Payment Gateway Downtime: Disruption in payment verification due to financial institution outages,"
@@ -21,12 +21,8 @@ Welcome to the Solution Architect Assistant!
 Here you can analyze the negative impact of an external events to your company's business process and generate high level solutions that help you to mitigate the impact.
 """
 
-load_dotenv()
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", None)
-
-
-def main():
+async def main():
     print(INTRODUCTION_MESSAGE)
     formatted_events = "\n\t".join([f"{i + 1}. {event}" for i, event in enumerate(EVENTS)])
     print(f"To start please select an event from the list below:\n\t{formatted_events}")
@@ -43,7 +39,9 @@ def main():
 
     print(f"You have selected the following event:\n\t{EVENTS[event_number]}")
     print("Now we are starting Impact analysis process...")
+    print("Please wait...")
+    await execute_impact_analysis(EVENTS[event_number])
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
