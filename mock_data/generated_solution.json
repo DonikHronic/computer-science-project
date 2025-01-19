@@ -1,137 +1,131 @@
 {
+  "improvement_recommendations": "To mitigate the impact of the Payment Gateway Downtime, we will introduce a new node for manual payment verification that can be used as a workaround until the payment gateway is restored. This will allow reservations to proceed without delays. Additionally, we will remediate the existing interactions to reflect the updated process.",
   "objects": [
     {
       "id": 1,
       "name": "Initiate Reservation",
       "description": "The client selects services and confirms the reservation by finalizing the booking.",
-      "status": "IMPACTED",
-      "solution": "No changes needed."
+      "status": "REMEDIATED",
+      "solution": "Updated to connect with manual payment verification."
     },
     {
       "id": 2,
       "name": "Verify Payment Method",
       "description": "System verifies the payment method with the financial institution.",
       "status": "BLOCKED",
-      "solution": "Implement temporary manual payment verification process."
+      "solution": "Currently blocked due to payment gateway downtime."
     },
     {
       "id": 3,
       "name": "Security Screening",
       "description": "System conducts a security screening to ensure the transaction is secure.",
-      "status": "IMPACTED",
-      "solution": "No changes needed."
+      "status": "REMEDIATED",
+      "solution": "Updated to connect with manual payment verification."
     },
     {
       "id": 4,
       "name": "Confirm Payment",
       "description": "The financial institution confirms payment after the security screening.",
-      "status": "IMPACTED",
-      "solution": "No changes needed."
+      "status": "REMEDIATED",
+      "solution": "Updated to connect with manual payment verification."
     },
     {
       "id": 5,
       "name": "Check Service Availability",
       "description": "The Reservation System verifies and confirms the availability of the requested services.",
-      "status": "IMPACTED",
-      "solution": "No changes needed."
+      "status": "REMEDIATED",
+      "solution": "Updated to connect with manual payment verification."
     },
     {
       "id": 6,
       "name": "Send Reservation Confirmation Email",
       "description": "The client receives an email confirming the reservation and its details.",
-      "status": "IMPACTED",
-      "solution": "No changes needed."
+      "status": "REMEDIATED",
+      "solution": "Updated to connect with manual payment verification."
     },
     {
       "id": 7,
       "name": "Dispatch to Service Provider",
       "description": "The Reservation System sends the reservation details to the service provider for preparation.",
-      "status": "IMPACTED",
-      "solution": "No changes needed."
+      "status": "REMEDIATED",
+      "solution": "Updated to connect with manual payment verification."
     },
     {
       "id": 8,
       "name": "Acknowledge by Service Provider",
       "description": "The service provider acknowledges receipt of the reservation and starts preparation.",
-      "status": "IMPACTED",
-      "solution": "No changes needed."
+      "status": "REMEDIATED",
+      "solution": "Updated to connect with manual payment verification."
     },
     {
       "id": 9,
       "name": "Prepare Services",
       "description": "The service provider prepares the necessary services as per the reservation.",
-      "status": "IMPACTED",
-      "solution": "No changes needed."
+      "status": "REMEDIATED",
+      "solution": "Updated to connect with manual payment verification."
     },
     {
       "id": 10,
       "name": "Update Reservation Status",
       "description": "The Reservation System updates the status of the reservation after preparation.",
-      "status": "IMPACTED",
-      "solution": "No changes needed."
+      "status": "REMEDIATED",
+      "solution": "Updated to connect with manual payment verification."
     },
     {
       "id": 11,
       "name": "Provide Services",
       "description": "The services are provided to the client as per the reservation details.",
-      "status": "IMPACTED",
-      "solution": "No changes needed."
+      "status": "REMEDIATED",
+      "solution": "Updated to connect with manual payment verification."
     },
     {
       "id": 12,
       "name": "Send Service Delivery Email",
       "description": "The client receives an email confirming the delivery of the services.",
-      "status": "IMPACTED",
-      "solution": "No changes needed."
+      "status": "REMEDIATED",
+      "solution": "Updated to connect with manual payment verification."
     },
     {
       "id": 13,
       "name": "Confirm Payment Receipt",
       "description": "The system confirms that payment has been received for the services.",
-      "status": "BLOCKED",
-      "solution": "Implement temporary manual payment confirmation."
+      "status": "REMEDIATED",
+      "solution": "Updated to connect with manual payment verification."
     },
     {
       "id": 14,
       "name": "Finalize Payment",
       "description": "The Payment Processing System finalizes the payment for the services.",
-      "status": "IMPACTED",
-      "solution": "No changes needed."
+      "status": "REMEDIATED",
+      "solution": "Updated to connect with manual payment verification."
     },
     {
       "id": 15,
       "name": "Generate Receipt",
       "description": "The Reservation System generates a receipt for the provided services.",
-      "status": "IMPACTED",
-      "solution": "No changes needed."
+      "status": "REMEDIATED",
+      "solution": "Updated to connect with manual payment verification."
     },
     {
       "id": 16,
       "name": "Update Financial Records",
       "description": "The Financial Management System, including the Revenue Management module, is updated with the transaction details.",
-      "status": "IMPACTED",
-      "solution": "No changes needed."
+      "status": "REMEDIATED",
+      "solution": "Updated to connect with manual payment verification."
     },
     {
       "id": 17,
       "name": "Complete Service Delivery",
       "description": "The client receives the completed services, marking the end of the Reservation E2E Process.",
-      "status": "IMPACTED",
-      "solution": "No changes needed."
+      "status": "REMEDIATED",
+      "solution": "Updated to connect with manual payment verification."
     },
     {
       "id": 18,
       "name": "Manual Payment Verification",
-      "description": "Temporary manual process for verifying payments during financial institution outages.",
+      "description": "A temporary manual process to verify payments while the payment gateway is down.",
       "status": "NEW",
-      "solution": "A temporary manual payment verification process to maintain service continuity."
-    },
-    {
-      "id": 19,
-      "name": "Manual Payment Confirmation",
-      "description": "Temporary manual confirmation process for payments during financial institution outages.",
-      "status": "NEW",
-      "solution": "A temporary manual payment confirmation process to maintain service continuity."
+      "solution": "Introduced as a workaround for payment verification."
     }
   ],
   "interactions": [
@@ -141,7 +135,12 @@
         {
           "id": 2,
           "status": "BLOCKED",
-          "solution": "Implement temporary manual verification for payment."
+          "solution": "Currently blocked due to payment gateway downtime."
+        },
+        {
+          "id": 18,
+          "status": "NEW",
+          "solution": "Connect to manual payment verification as a workaround."
         }
       ]
     },
@@ -150,138 +149,8 @@
       "to": [
         {
           "id": 3,
-          "status": "IMPACTED",
-          "solution": "No changes needed."
-        }
-      ]
-    },
-    {
-      "from": 3,
-      "to": [
-        {
-          "id": 4,
-          "status": "IMPACTED",
-          "solution": "No changes needed."
-        }
-      ]
-    },
-    {
-      "from": 4,
-      "to": [
-        {
-          "id": 5,
-          "status": "IMPACTED",
-          "solution": "No changes needed."
-        }
-      ]
-    },
-    {
-      "from": 5,
-      "to": [
-        {
-          "id": 6,
-          "status": "IMPACTED",
-          "solution": "No changes needed."
-        },
-        {
-          "id": 7,
-          "status": "IMPACTED",
-          "solution": "No changes needed."
-        }
-      ]
-    },
-    {
-      "from": 7,
-      "to": [
-        {
-          "id": 8,
-          "status": "IMPACTED",
-          "solution": "No changes needed."
-        }
-      ]
-    },
-    {
-      "from": 8,
-      "to": [
-        {
-          "id": 9,
-          "status": "IMPACTED",
-          "solution": "No changes needed."
-        }
-      ]
-    },
-    {
-      "from": 9,
-      "to": [
-        {
-          "id": 10,
-          "status": "IMPACTED",
-          "solution": "No changes needed."
-        },
-        {
-          "id": 11,
-          "status": "IMPACTED",
-          "solution": "No changes needed."
-        }
-      ]
-    },
-    {
-      "from": 11,
-      "to": [
-        {
-          "id": 12,
-          "status": "IMPACTED",
-          "solution": "No changes needed."
-        },
-        {
-          "id": 13,
-          "status": "BLOCKED",
-          "solution": "Implement temporary manual payment confirmation."
-        },
-        {
-          "id": 17,
-          "status": "IMPACTED",
-          "solution": "No changes needed."
-        }
-      ]
-    },
-    {
-      "from": 13,
-      "to": [
-        {
-          "id": 14,
-          "status": "IMPACTED",
-          "solution": "No changes needed."
-        },
-        {
-          "id": 15,
-          "status": "IMPACTED",
-          "solution": "No changes needed."
-        }
-      ]
-    },
-    {
-      "from": 15,
-      "to": [
-        {
-          "id": 16,
-          "status": "IMPACTED",
-          "solution": "No changes needed."
-        }
-      ]
-    },
-    {
-      "from": 2,
-      "to": [
-        {
-          "id": 18,
-          "status": "NEW",
-          "solution": "Temporary manual payment verification process."
-        },
-        {
-          "id": 19,
-          "status": "NEW",
-          "solution": "Temporary manual payment confirmation process."
+          "status": "REMEDIATED",
+          "solution": "Updated to connect with manual payment verification."
         }
       ]
     },
@@ -290,18 +159,128 @@
       "to": [
         {
           "id": 3,
-          "status": "IMPACTED",
-          "solution": "No changes needed."
+          "status": "NEW",
+          "solution": "Manual payment verification leads to security screening."
+        },
+        {
+          "id": 4,
+          "status": "NEW",
+          "solution": "Manual payment verification leads to payment confirmation."
         }
       ]
     },
     {
-      "from": 19,
+      "from": 3,
+      "to": [
+        {
+          "id": 4,
+          "status": "REMEDIATED",
+          "solution": "Updated to connect with manual payment verification."
+        }
+      ]
+    },
+    {
+      "from": 4,
+      "to": [
+        {
+          "id": 5,
+          "status": "REMEDIATED",
+          "solution": "Updated to connect with manual payment verification."
+        }
+      ]
+    },
+    {
+      "from": 5,
+      "to": [
+        {
+          "id": 6,
+          "status": "REMEDIATED",
+          "solution": "Updated to connect with manual payment verification."
+        },
+        {
+          "id": 7,
+          "status": "REMEDIATED",
+          "solution": "Updated to connect with manual payment verification."
+        }
+      ]
+    },
+    {
+      "from": 7,
+      "to": [
+        {
+          "id": 8,
+          "status": "REMEDIATED",
+          "solution": "Updated to connect with manual payment verification."
+        }
+      ]
+    },
+    {
+      "from": 8,
+      "to": [
+        {
+          "id": 9,
+          "status": "REMEDIATED",
+          "solution": "Updated to connect with manual payment verification."
+        }
+      ]
+    },
+    {
+      "from": 9,
+      "to": [
+        {
+          "id": 10,
+          "status": "REMEDIATED",
+          "solution": "Updated to connect with manual payment verification."
+        },
+        {
+          "id": 11,
+          "status": "REMEDIATED",
+          "solution": "Updated to connect with manual payment verification."
+        }
+      ]
+    },
+    {
+      "from": 11,
+      "to": [
+        {
+          "id": 12,
+          "status": "REMEDIATED",
+          "solution": "Updated to connect with manual payment verification."
+        },
+        {
+          "id": 13,
+          "status": "REMEDIATED",
+          "solution": "Updated to connect with manual payment verification."
+        },
+        {
+          "id": 17,
+          "status": "REMEDIATED",
+          "solution": "Updated to connect with manual payment verification."
+        }
+      ]
+    },
+    {
+      "from": 13,
       "to": [
         {
           "id": 14,
-          "status": "IMPACTED",
-          "solution": "No changes needed."
+          "status": "REMEDIATED",
+          "solution": "Updated to connect with manual payment verification."
+        },
+        {
+          "id": 15,
+          "status": "REMEDIATED",
+          "solution": "Updated to connect with manual payment verification."
+        }
+      ]
+    },
+    {
+      "from": 15,
+      "to": [
+        {
+          "id": 16,
+          "status": "REMEDIATED",
+          "solution": "Updated to connect with manual payment verification."
         }
       ]
     }

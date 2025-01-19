@@ -1,0 +1,166 @@
+# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+
+# Learn more about building a configuration: https://promptfoo.dev/docs/configuration/guide
+
+description: "Prompt Evaluation"
+
+prompts:
+  - >
+    You are a helpful assistant.
+    Your task is to help to analyze the negative impact of an external event to a company's business processes
+    
+    You will be given with the following data:
+     - A JSON structure of a company's business process as a graph representation
+     - An external event.
+    
+    1. The JSON has objects of process(nodes) and interactions of these objects(edges).
+    2. The external event is a string that represents the event that might has a negative impact on the company's business processes.
+    
+    Your task is to analyze how objects and interactions between them are affected by the external event.
+    For affection levels use the following values:
+    - BLOCKED: The object is directly affected and it might affect the relationships or neighbour objects.
+    - IMPACTED: The object's relationships or neighbour objects are directly affected and it might affect the object itself.
+                All objects which are directly connected to blocked objects
+    
+    By default all objects and interactions are AVAILABLE.
+    
+    Below is the DATA that you will be working with:
+    
+    COMPANY BUSINESS PROCESS:
+    {{company_business_process}}
+    
+    EXTERNAL EVENT:
+    {{external_event}}
+    
+    Your output should be strictly in the following output format:
+    {{output_format}}
+    
+    !!! IMPORTANT: Return all nodes and edges in your response
+  - >
+    You are a helpful assistant.
+    Your task is to help to analyze how a company's business process is affected by an external event and generate solutions to mitigate the impact.
+
+    You will be given with the following data:
+    - A JSON structure of a company's impacted business process as a graph.
+    - An external event.
+
+    1. The JSON has objects of process(nodes) and interactions between these objects(edges).
+       The objects and interactions can be in three states: AVAILABLE, IMPACTED, BLOCKED.
+    2. The external event is a string that represents the event that might have a negative impact on the company's business processes.
+
+    Your task is to generate a solution to mitigate the impact of the external event on the company's business processes.
+    As a solution you can generate new nodes or update the existing nodes and interactions.
+    To describe the solution changes, you can add the solution field to the object or interaction.
+
+    For new nodes or interactions, you should have to set the availability field as NEW.
+    For the existing nodes or interactions, you should have to set the availability field as REMEDIATED
+
+    By adding new node, you also have to connect this node to the existing nodes by adding at least 2 new interactions,
+    which are working as workaround for the blocked interaction. 
+
+    Below is the DATA that you will be working with:
+
+    COMPANY's IMPACTED BUSINESS PROCESS:
+    {{company_business_process}}
+
+    EXTERNAL EVENT:
+    {{external_event}}
+
+    Your output should be strictly in the following output format:
+    {{output_format}}
+
+    !!! IMPORTANT: Return all nodes and edges in your response
+
+
+providers:
+  - "openai:gpt-4o"
+
+
+tests:
+  - vars:
+      company_business_process: >
+        {
+          "objects": [
+            {
+              "id": 1,
+              "name": "Initiate Reservation",
+              "description": "The client selects services and confirms the reservation by finalizing the booking.",
+              "status": "AVAILABLE"
+            },
+            {
+              "id": 2,
+              "name": "Verify Payment Method",
+              "description": "System verifies the payment method with the financial institution.",
+              "status": "AVAILABLE"
+            },
+            {
+              "id": 3,
+              "name": "Security Screening",
+              "description": "System conducts a security screening to ensure the transaction is secure.",
+              "status": "AVAILABLE"
+            },
+            {
+              "id": 4,
+              "name": "Confirm Payment",
+              "description": "The financial institution confirms payment after the security screening.",
+              "status": "AVAILABLE"
+            }
+          ],
+          "interactions": [
+            {
+              "from": 1,
+              "name": "Initiate Reservation",
+              "to": [
+                {
+                  "id": 2,
+                  "status": "AVAILABLE"
+                }
+              ]
+            },
+            {
+              "from": 2,
+              "name": "Verify Payment Method",
+              "to": [
+                {
+                  "id": 3,
+                  "status": "AVAILABLE"
+                }
+              ]
+            },
+            {
+              "from": 3,
+              "name": "Security Screening",
+              "to": [
+                {
+                  "id": 4,
+                  "status": "AVAILABLE"
+                }
+              ]
+            }
+          ]
+        }
+      external_event: > 
+        Payment Gateway Downtime: Disruption in payment verification due to financial institution outages,
+        delaying reservations
+      output_format: >
+        {
+          "objects": [
+            {
+              "id": <object_id>,
+              "name": "object_name",
+              "description": "Object description",
+              "status": "AVAILABLE | IMPACTED | BLOCKED"
+            }
+          ],
+          "interactions": [
+            {
+              "from": <object_id>,
+              "to": [
+                {
+                  "id": <object_id>,
+                  "status": "AVAILABLE | IMPACTED | BLOCKED"
+                },
+              ]
+            }
+          ]
+        }

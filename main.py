@@ -2,26 +2,14 @@ import asyncio
 
 from impact_analysis.impact_analysis import execute_impact_analysis
 from solution_modelling.solution_modeling import generate_solution_for_business_process
-from utils.data_loader import load_initial_architecture
+from utils.data_loader import load_initial_architecture, EVENTS
 from utils.visualize_business_process import visualize_business_process
-
-EVENTS = [
-    "Payment Gateway Downtime: Disruption in payment verification due to financial institution outages,"
-    " delaying reservations",
-    "Service Provider Strikes or Shortages: Inability of service providers to fulfill reservations due to"
-    " labor disputes or resource shortages",
-    "Cybersecurity Breaches: Compromised client data and transaction security from cyber attacks,"
-    " eroding trust and causing operational disruptions",
-    "Regulatory Changes: Necessary system updates and process modifications due to new or altered legal requirements,"
-    " causing delays",
-    "Natural Disasters or Pandemics: Service interruptions and high cancellation rates triggered by environmental or"
-    " health crises",
-]
 
 INTRODUCTION_MESSAGE = """
 Welcome to the Solution Architect Assistant!
 
-Here you can analyze the negative impact of an external events to your company's business process and generate high level solutions that help you to mitigate the impact.
+Here you can analyze the negative impact of an external events to your company's business process
+ and generate high level solutions that help you to mitigate the impact.
 """
 
 
@@ -56,6 +44,7 @@ async def main():
     await visualize_business_process(result)
     print("Solution generation process is completed.")
     print("You can find the generated solution in 'generated_solution.json' file.")
+    print(f"Below is the Detailed Remediation Plan:\n{result['improvement_recommendations']}")
 
     print("Thank you for using Solution Architect Assistant!")
 

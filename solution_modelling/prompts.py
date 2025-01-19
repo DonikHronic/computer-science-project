@@ -37,6 +37,7 @@ Your output should be strictly in the following output format:
 
 OUTPUT_FORMAT = """
 {
+  "improvement_recommendations": "Detailed Remediation Plan",
   "objects": [
     {
       "id": <object_id>

@@ -76,7 +76,7 @@
       "id": 13,
       "name": "Confirm Payment Receipt",
       "description": "The system confirms that payment has been received for the services.",
-      "status": "BLOCKED"
+      "status": "IMPACTED"
     },
     {
       "id": 14,
@@ -193,7 +193,7 @@
         },
         {
           "id": 13,
-          "status": "BLOCKED"
+          "status": "IMPACTED"
         },
         {
           "id": 17,
