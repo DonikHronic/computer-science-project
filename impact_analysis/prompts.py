@@ -11,8 +11,9 @@ You will be given with the following data:
 
 Your task is to analyze how objects and interactions between them are affected by the external event.
 For affection levels use the following values:
-- IMPACTED: The object's relationships or neighbour objects are directly affected and it might affect the object itself.
 - BLOCKED: The object is directly affected and it might affect the relationships or neighbour objects.
+- IMPACTED: The object's relationships or neighbour objects are directly affected and it might affect the object itself.
+            All objects which are directly connected to blocked objects
 
 By default all objects and interactions are AVAILABLE.
 
@@ -26,21 +27,29 @@ EXTERNAL EVENT:
 
 Your output should be strictly in the following output format:
 {output_format}
+
+!!! IMPORTANT: Return all nodes and edges in your response
 """  # noqa
 
 OUTPUT_FORMAT = """
 {
   "objects": [
     {
+      "id": <object_id>,
       "name": "object_name",
-      "availability": "AVAILABLE | IMPACTED | BLOCKED"
+      "description": "Object description",
+      "status": "AVAILABLE | IMPACTED | BLOCKED"
     }
   ],
   "interactions": [
     {
-      "from": "object_name",
-      "to": "object_name",
-      "availability": "AVAILABLE | IMPACTED | BLOCKED"
+      "from": <object_id>,
+      "to": [
+        {
+          "id": <object_id>,
+          "status": "AVAILABLE | IMPACTED | BLOCKED"
+        },
+      ]
     }
   ]
 }
